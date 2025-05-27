@@ -31,3 +31,4 @@ resource "aws_eks_access_entry" "developer" {
   cluster_name      = aws_eks_cluster.eks.name
   principal_arn     = aws_iam_user.developer.arn
   kubernetes_groups = ["my-viewer"]
+}
