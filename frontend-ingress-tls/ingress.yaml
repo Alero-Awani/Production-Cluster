@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+  namespace: 9-example
+  annotations:
+    cert-manager.io/cluster-issuer: http-01-production
+spec:
+  ingressClassName: external-nginx
+  rules:
+    - host: shop.alerotech.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myapp
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - shop.alerotech.xyz
+      secretName: shop-alerotech-tls
