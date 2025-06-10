@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: frontend
-  namespace: 9-example
+  namespace: frontend
   annotations:
     cert-manager.io/cluster-issuer: http-01-production
 spec:
@@ -16,7 +16,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: myapp
+                name: frontend
                 port:
                   number: 8080
   tls:
